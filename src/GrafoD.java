@@ -5,8 +5,8 @@ public class GrafoD {
 	int cantVertices;
 
 	public GrafoD() {
-	  grafo = new Lista[3];
-	  cantVertices = 3;
+	  grafo = new Lista[10];
+	  cantVertices = 10;
 	  for(int i=0; i< cantVertices; i++) {
 		  grafo[i] = new Lista();
 	  }
@@ -41,7 +41,7 @@ public class GrafoD {
 		
 		while(!stack.isEmpty()) {
 			Integer top = stack.peek();
-
+			stack.pop();
 			if(visitado[top] == -1) {
 				visitado[top] = 0;
 				Lista ady = new Lista();
@@ -54,12 +54,11 @@ public class GrafoD {
 				}
 			}
 			else if(visitado[top] == 1) {
-					stack.pop();
+					return true;
 			}
 			else {
 				visitado[top] = 1;
-				System.out.println(top);
-				stack.pop();
+				return true;
 			}
 		}
 		return false;
